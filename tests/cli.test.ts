@@ -37,7 +37,7 @@ test("run prints exact global help for the sole --help argument", () => {
     expect(FakeIo.outText).toBe(
       "usage: manlens render [--width N] [--ansi] FILE\n" +
         "       manlens markdown FILE\n" +
-        "       manlens lint FILE\n" +
+        "       manlens lint [--only CODES] FILE\n" +
         "       manlens flags FILE\n" +
         "       manlens drift MAN HELP\n",
     );
@@ -45,7 +45,7 @@ test("run prints exact global help for the sole --help argument", () => {
     expect(out).toHaveBeenCalledWith(
       "usage: manlens render [--width N] [--ansi] FILE\n" +
         "       manlens markdown FILE\n" +
-        "       manlens lint FILE\n" +
+        "       manlens lint [--only CODES] FILE\n" +
         "       manlens flags FILE\n" +
         "       manlens drift MAN HELP\n",
     );

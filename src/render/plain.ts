@@ -83,7 +83,7 @@ export function renderDoc(doc: Doc, width: number, ansi: boolean): string {
       gap: segment.gap,
       rows: renderRows(segment.words, avail, ansi),
     }));
-    const firstSegment = packedSegments[0];
+    const [firstSegment] = packedSegments;
     const firstBodyRow = firstSegment?.rows[0];
     const canShare =
       block.tag !== null &&

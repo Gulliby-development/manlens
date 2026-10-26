@@ -269,7 +269,7 @@ export function buildDoc(text: string): Doc {
     if (args.length > 0) {
       const parsed = parseNumber(args[0]?.text ?? "");
       if (parsed === null) {
-        const arg = args[0];
+        const [arg] = args;
         if (arg !== undefined) {
           addProblem(line, arg.col, "MN006", `invalid number ${show(arg.text)}`);
         }
@@ -284,10 +284,10 @@ export function buildDoc(text: string): Doc {
   const handleIp = (line: number, args: Arg[]): void => {
     closeBlock();
     pending = Math.max(pending, 1);
-    const tagArg = args[0];
+    const [tagArg] = args;
     const words = tagArg === undefined ? [] : splitWords(decodeArgument(line, tagArg, "R"));
     if (args.length > 1) {
-      const arg = args[1];
+      const [, arg] = args;
       if (arg !== undefined) {
         const parsed = parseNumber(arg.text);
         if (parsed === null) {
@@ -315,7 +315,7 @@ export function buildDoc(text: string): Doc {
     if (args.length === 0) {
       return fallback;
     }
-    const arg = args[0];
+    const [arg] = args;
     if (arg === undefined) {
       return fallback;
     }

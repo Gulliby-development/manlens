@@ -31,12 +31,14 @@ No manual-page renderer or pager is needed.
 ```text
 usage: manlens render [--width N] [--ansi] FILE
        manlens markdown FILE
-       manlens lint FILE
+       manlens lint [--only CODES] FILE
        manlens flags FILE
        manlens drift MAN HELP
 ```
 
 Use `--help` as the only argument to print these usage lines. For commands that read a page, pass a path or `-` to read standard input. `render` previews a page, `markdown` converts it, and `lint` reports page problems. `flags` lists options documented by the page. `drift` compares a manual page with a saved help-text file; it reads that file and never runs the documented program.
+
+`lint --only CODES` reports only the problems whose code is in CODES, a comma-separated list of codes from `MN001` to `MN013` (`manlens lint --only MN006,MN009 page.1`); the summary counts only the reported problems, and when none of them is left the output is `ok, N lines`. A code outside that range, an empty item or a missing value is an error with exit code 2. The option may stand before or after FILE, and when it is given twice the last one is used.
 
 ### Render example
 
