@@ -102,7 +102,7 @@ export function run(argv: string[], io: Io): number {
       return 0;
     }
 
-    const commandName = argv[0];
+    const [commandName] = argv;
     if (commandName === undefined) {
       throw new Fail("missing command (render, markdown, lint, flags or drift)");
     }

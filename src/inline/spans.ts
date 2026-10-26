@@ -26,7 +26,7 @@ export function decode(
       break;
     }
     const char = String.fromCodePoint(codePoint);
-    index += codePoint > 0xffff ? 2 : 1;
+    index += codePoint > 0xff_ff ? 2 : 1;
 
     if (char !== "\\") {
       runs.push({ text: isControl(char) ? "?" : char, font: current });
@@ -40,7 +40,7 @@ export function decode(
     }
 
     const escapedChar = String.fromCodePoint(escapedCodePoint);
-    const escapedLength = escapedCodePoint > 0xffff ? 2 : 1;
+    const escapedLength = escapedCodePoint > 0xff_ff ? 2 : 1;
     if (escapedChar === "\\") {
       runs.push({ text: "\\", font: current });
       index += escapedLength;
@@ -59,7 +59,7 @@ export function decode(
       const fontCodePoint = raw.codePointAt(index + escapedLength);
       const fontChar =
         fontCodePoint === undefined ? undefined : String.fromCodePoint(fontCodePoint);
-      const fontLength = fontCodePoint === undefined ? 0 : fontCodePoint > 0xffff ? 2 : 1;
+      const fontLength = fontCodePoint === undefined ? 0 : fontCodePoint > 0xff_ff ? 2 : 1;
       if (fontChar === "R" || fontChar === "B" || fontChar === "I") {
         previous = current;
         current = fontChar;
@@ -85,7 +85,7 @@ export function decode(
           break;
         }
         name += String.fromCodePoint(nameCodePoint);
-        consumed += nameCodePoint > 0xffff ? 2 : 1;
+        consumed += nameCodePoint > 0xff_ff ? 2 : 1;
       }
       const replacement = name.length === 2 ? glyph(name) : undefined;
       if (replacement === undefined) {
@@ -137,7 +137,7 @@ export function splitWords(runs: Run[]): Word[] {
         break;
       }
       const char = String.fromCodePoint(codePoint);
-      index += codePoint > 0xffff ? 2 : 1;
+      index += codePoint > 0xff_ff ? 2 : 1;
 
       if (char === " " || char === "\t") {
         flushWord();

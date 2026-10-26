@@ -89,10 +89,10 @@ test("runLint reads a file and exports the lint command metadata", () => {
   FakeIo.errText = "";
 
   expect(runLint(["a.1"], new Set(), new Map(), FakeIo)).toEqual({ out: "ok, 1 line\n", code: 0 });
-  expect(USAGE).toBe("       manlens lint FILE");
+  expect(USAGE).toBe("       manlens lint [--only CODES] FILE");
   expect(ARGS).toEqual(["FILE"]);
   expect(FLAGS).toEqual([]);
-  expect(VALUES).toEqual([]);
+  expect(VALUES).toEqual(["--only"]);
   expect(FakeIo.outText).toBe("");
   expect(FakeIo.errText).toBe("");
 });

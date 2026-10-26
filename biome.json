@@ -12,6 +12,12 @@
     "includes": ["src/**", "tests/**"]
   },
   "linter": {
-    "enabled": true
+    "enabled": true,
+    "rules": {
+      "style": {
+        "useDestructuring": "error",
+        "useNumericSeparators": "error"
+      }
+    }
   }
 }

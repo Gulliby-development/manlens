@@ -17,7 +17,7 @@ function isBlank(character: string | undefined): boolean {
 
 function codePointLength(text: string, index: number): number {
   const codePoint = text.codePointAt(index);
-  return codePoint !== undefined && codePoint > 0xffff ? 2 : 1;
+  return codePoint !== undefined && codePoint > 0xff_ff ? 2 : 1;
 }
 
 function isWhitespaceOnly(text: string): boolean {
