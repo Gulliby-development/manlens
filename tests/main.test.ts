@@ -37,7 +37,7 @@ test("README documents installation, commands, page language, and development", 
     "```text\n" +
       "usage: manlens render [--width N] [--ansi] FILE\n" +
       "       manlens markdown FILE\n" +
-      "       manlens lint [--only CODES] FILE\n" +
+      "       manlens lint [--only CODES] [--quiet] FILE\n" +
       "       manlens flags FILE\n" +
       "       manlens drift MAN HELP\n" +
       "```",
