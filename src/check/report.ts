@@ -5,11 +5,16 @@ export function lintReport(
   display: string,
   doc: Doc,
   only?: Set<string>,
+  quiet = false,
 ): { out: string; code: number } {
   const problems =
     only === undefined ? doc.problems : doc.problems.filter((problem) => only.has(problem.code));
   if (problems.length === 0) {
     return { out: `ok, ${plural(doc.lines, "line")}\n`, code: 0 };
+  }
+
+  if (quiet) {
+    return { out: `${plural(problems.length, "problem")}\n`, code: 1 };
   }
 
   const diagnostics = problems
